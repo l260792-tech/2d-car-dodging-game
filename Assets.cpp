@@ -16,6 +16,11 @@ bool loadAssets(GameData& game)
     game.Road.setTexture(game.Roadtex);
     game.Road.setScale(1280.f/game.Roadtex.getSize().x,720.f/game.Roadtex.getSize().y);
 
+        //update2 
+    game.Gameovtex.loadFromFile("C:/c++/textures/gameover.jpeg");
+    game.Gameovimg.setTexture(game.Gameovtex);
+    game.Gameovimg.setScale(1280.f / game.Gameovtex.getSize().x, 720.f / game.Gameovtex.getSize().y);
+
      game.Road2.setTexture(game.Roadtex);
      game.Road2.setScale(1280.f / game.Roadtex.getSize().x, 720.f / game.Roadtex.getSize().y);
      game.Road2.setPosition(1280.f, 0.f); // a second copy to loop
