@@ -4,6 +4,10 @@ using namespace sf;
 
 bool loadAssets(GameData& game)
 {
+    game.menutex.loadFromFile("C:/c++/textures/menuu.jpeg");
+    game.menuimg.setTexture(game.menutex);
+    game.menuimg.setScale(1280.f / game.menutex.getSize().x, 720.f / game.menutex.getSize().y);
+   
     game.carTex[0].loadFromFile("C:/c++/textures/enemy.png");
     game.carTex[1].loadFromFile("C:/c++/textures/enemy2.png");
     game.car.setScale(Vector2f(0.235f,0.235f));
