@@ -12,6 +12,10 @@ bool loadAssets(GameData& game)
     game.Road.setTexture(game.Roadtex);
     game.Road.setScale(1280.f/game.Roadtex.getSize().x,720.f/game.Roadtex.getSize().y);
 
+     game.Road2.setTexture(game.Roadtex);
+     game.Road2.setScale(1280.f / game.Roadtex.getSize().x, 720.f / game.Roadtex.getSize().y);
+     game.Road2.setPosition(1280.f, 0.f); // a second copy to loop
+
     game.playerTex.loadFromFile("C:/c++/textures/car.png");
     game.player.setTexture(game.playerTex);
     game.player.setScale(0.2f,0.2f);
