@@ -5,13 +5,13 @@ void handleMenuEvent(GameData& game, const sf::Event& event)
 {
     if (!game.gameStarted && event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Num1) {
-            game.spawnDelay = 60; game.gameStarted = true; game.speed = -7.f;
+            game.spawnDelay = 70; game.gameStarted = true; game.speed = -7.f;
         }
         else if (event.key.code == sf::Keyboard::Num2) {
-            game.spawnDelay = 50; game.gameStarted = true; game.speed = -8.5f;
+            game.spawnDelay = 55; game.gameStarted = true; game.speed = -8.5f;
         }
         else if (event.key.code == sf::Keyboard::Num3) {
-            game.spawnDelay = 40; game.gameStarted = true; game.speed = -11.f;
+            game.spawnDelay = 42; game.gameStarted = true; game.speed = -11.f;
         }
     }
 
