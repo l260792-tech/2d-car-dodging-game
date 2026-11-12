@@ -26,6 +26,10 @@ struct GameData {
     sf::Texture menutex;
     sf::Sprite menuimg;
 
+        //update 2
+    sf::Texture Gameovtex;
+    sf::Sprite Gameovimg;
+
     sf::Texture Roadtex;
     sf::Sprite Road;
     sf::Sprite Road2;
