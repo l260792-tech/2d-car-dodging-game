@@ -40,7 +40,9 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window)
         window.draw(game.menuimg);
     }
     else if (game.gameOver) {
-        window.draw(game.GameOver);
+        //window.draw(game.GameOver);
+        //update
+        window.draw(game.Gameovimg);
         game.player.setPosition(sf::Vector2f(0.f, 330.f));
     }
     game.Score.setString(
