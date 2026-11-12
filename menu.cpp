@@ -34,7 +34,11 @@ void handleMenuEvent(GameData& game, const sf::Event& event)
 
 void drawMenuAndHud(GameData& game, sf::RenderWindow& window)
 {
-    if (!game.gameStarted) window.draw(game.menuText);
+   if (!game.gameStarted) 
+    {
+        //window.draw(game.menuText);
+        window.draw(game.menuimg);
+    }
     else if (game.gameOver) {
         window.draw(game.GameOver);
         game.player.setPosition(sf::Vector2f(0.f, 330.f));
