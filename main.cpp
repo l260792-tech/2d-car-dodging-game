@@ -28,9 +28,22 @@ int main()
         }
          
         window.clear(); //clear the window
+        //
+        game.Road.move(game.speed, 0.f);
+        game.Road2.move(game.speed, 0.f);
 
+        if (game.Road.getPosition().x <= -1280.f)
+        {
+            game.Road.setPosition(game.Road2.getPosition().x + 1280.f, 0.f);
+        }
 
-        window.draw(game.Road);  //draw road
+        if (game.Road2.getPosition().x <= -1280.f)
+        {
+            game.Road2.setPosition(game.Road.getPosition().x + 1280.f, 0.f);
+        }
+
+        window.draw(game.Road);
+        window.draw(game.Road2);// end
 
 
         if (game.gameStarted && !game.gameOver) 
