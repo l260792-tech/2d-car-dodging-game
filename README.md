@@ -25,6 +25,13 @@ A 2D car-dodging game written in C++ using SFML. Choose a difficulty, avoid inco
 | File | Purpose |
 |---|---|
 | `GameData.h` | Shared game state, including cars, road, score, and power-ups |
+| `Assets.h` | Declares the asset-loading function |
+| `Assets.cpp` | Loads textures, fonts, music, and the saved high score |
+| `Traffic.h` | Declares traffic update and drawing functions |
+| `Traffic.cpp` | Spawns and moves traffic, checks collisions, updates score, and handles power-ups |
+| `menu.h` | Declares menu event and HUD functions |
+| `menu.cpp` | Handles difficulty selection, return to menu, and on-screen display |
+| `main.cpp` | Creates the window and runs the main game loop |
 | `highscore.txt` | Stores the high score after a game ends; created when the game saves a score |
 
 ## Build requirements
@@ -51,3 +58,4 @@ The current source refers to assets under `C:/c++/textures/`. The required files
 - `Esc` — Return to the menu after game over
 
 Player movement and pause controls depend on the player module.
+
