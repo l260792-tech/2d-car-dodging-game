@@ -3,16 +3,10 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <SFML/Audio.hpp>
-
-// A collectible circle that moves across the road.
-// STRUCT basically stores different variables 
 struct PowerUp {
     sf::Sprite sprite;
     int type = 0; // 0 = shield, 1 = slow traffic
 };
-
-// Shared data from the original main() function. The modules receive this by
-// reference, so the game logic and its existing variables stay together.
 struct GameData {
     sf::Texture carTex[2];
     sf::Texture powerUpTextures[2];
