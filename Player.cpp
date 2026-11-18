@@ -4,7 +4,7 @@ void updatePlayer(GameData& game)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) 
         game.Pause = true;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) //pausing and resuming
         game.Pause = false;
 
     float speed = 7.0f;
