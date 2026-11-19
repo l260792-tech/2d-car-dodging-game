@@ -56,5 +56,14 @@ struct GameData {
     bool shieldActive = false;
     int slowTrafficTimer = 0;
 
+sf::Texture coinTexture;
+
+std::vector<Coin> coins;
+int coinSpawnTimer = 0;       
+int coinSpawnDelay = 150; 
+int totalCoins = 0;
+
+sf::Text CoinsText;
+
     sf::Music backgroundMusic;
 };
