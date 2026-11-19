@@ -38,21 +38,20 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window)
         game.carSpawnTimer = 0;
     }
 
-    // Count frames until the next powerup appears.
+       // Count frames until the next powerup appears.
     game.powerUpSpawnTimer++;
 
-    if (game.powerUpSpawnTimer >= game.powerUpSpawnDelay) 
+    if (game.powerUpSpawnTimer >= game.powerUpSpawnDelay)
     {
         PowerUp item;
-        item.type = std::rand() % 2; // Randomly choose shield or slow traffic.
+        item.type = std::rand() % 2;
 
-        //Set texture of powerup
         item.sprite.setTexture(game.powerUpTextures[item.type]);
 
-        // Scale the image to fit within about 55 by 55 pixels.
-
+        // Scale powerup to about 55 x 55 pixels.
         sf::Vector2u imageSize = game.powerUpTextures[item.type].getSize();
-        if (imageSize.x > 0 && imageSize.y > 0) 
+
+        if (imageSize.x > 0 && imageSize.y > 0)
         {
             float scaleX = 55.f / static_cast<float>(imageSize.x);
             float scaleY = 55.f / static_cast<float>(imageSize.y);
@@ -63,11 +62,31 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window)
         }
 
         int lane = std::rand() % 3;
+
         item.sprite.setPosition(
-            static_cast<float>(window.getSize().x) +220.f,
+            static_cast<float>(window.getSize().x) + 220.f,
             game.spawnYPositions[lane] + 35.f
         );
-        game.powerUps.push_back(item);
+
+        // Check whether the powerup overlaps an existing enemy car.
+        bool overlapping = false;
+
+        for (int i = 0; i < static_cast<int>(game.cars.size()); i++)
+        {
+            if (item.sprite.getGlobalBounds().intersects(
+                game.cars[i].getGlobalBounds()))
+            {
+                overlapping = true;
+                break;
+            }
+        }
+
+        // Spawn only if there is no overlap.
+        if (!overlapping)
+        {
+            game.powerUps.push_back(item);
+        }
+
         game.powerUpSpawnTimer = 0;
     }
 
