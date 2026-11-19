@@ -7,6 +7,11 @@ struct PowerUp {
     sf::Sprite sprite;
     int type = 0; // 0 = shield, 1 = slow traffic
 };
+
+struct Coin {
+    sf::Sprite sprite;
+};
+
 struct GameData {
     sf::Texture carTex[2];
     sf::Texture powerUpTextures[2];
