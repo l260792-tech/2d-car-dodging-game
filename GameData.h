@@ -3,18 +3,23 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <SFML/Audio.hpp>
+
+// A collectible circle that moves across the road.
+// STRUCT basically stores different variables 
 struct PowerUp {
     sf::Sprite sprite;
     int type = 0; // 0 = shield, 1 = slow traffic
 };
 
-struct Coin {
-    sf::Sprite sprite;
-};
-
+// Shared data from the original main() function. The modules receive this by
+// reference, so the game logic and its existing variables stay together.
 struct GameData {
     sf::Texture carTex[2];
     sf::Texture powerUpTextures[2];
+    sf::Texture Roadtex[2];
+
+    sf::Texture selectex;
+    sf::Sprite selectimg;
 
     sf::Sprite car;
     int carSpawnTimer = 15;
@@ -25,11 +30,10 @@ struct GameData {
     sf::Texture menutex;
     sf::Sprite menuimg;
 
-        //update 2
+    //update 2
     sf::Texture Gameovtex;
     sf::Sprite Gameovimg;
-
-    sf::Texture Roadtex;
+   
     sf::Sprite Road;
     sf::Sprite Road2;
     sf::Texture playerTex;
@@ -44,6 +48,7 @@ struct GameData {
     sf::Text menuText;
     sf::Text GameOver;
 
+    bool mapselect = false;
     bool Pause = false;
     bool touch = false;
     bool gameOver = false;
@@ -55,15 +60,6 @@ struct GameData {
     int powerUpSpawnDelay = 600;
     bool shieldActive = false;
     int slowTrafficTimer = 0;
-
-sf::Texture coinTexture;
-
-std::vector<Coin> coins;
-int coinSpawnTimer = 0;       
-int coinSpawnDelay = 150; 
-int totalCoins = 0;
-
-sf::Text CoinsText;
 
     sf::Music backgroundMusic;
 };
