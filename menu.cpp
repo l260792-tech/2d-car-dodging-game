@@ -2,22 +2,41 @@
 #include <string>
 // menu, game over
 void handleMenuEvent(GameData& game, const sf::Event& event) {
-    if (!game.gameStarted && !game.mapselect && event.type == sf::Event::KeyPressed) {
-        if (event.key.code == sf::Keyboard::Num1) {
+    if (!game.gameStarted && !game.mapselect && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+        /* if (event.key.code == sf::Keyboard::Num1) {
+             game.spawnDelay = 70;
+             game.speed = -7.f;
+             game.mapselect = true;
+         }
+         else if (event.key.code == sf::Keyboard::Num2) {
+             game.spawnDelay = 55;
+             game.speed = -8.5f;
+             game.mapselect = true;
+         }
+         else if (event.key.code == sf::Keyboard::Num3) {
+             game.spawnDelay = 42;
+             game.speed = -11.f;
+             game.mapselect = true;
+         }*/
+        if (game.button.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
+        {
             game.spawnDelay = 70;
             game.speed = -7.f;
             game.mapselect = true;
         }
-        else if (event.key.code == sf::Keyboard::Num2) {
+        if (game.button2.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
+        {
             game.spawnDelay = 55;
             game.speed = -8.5f;
             game.mapselect = true;
         }
-        else if (event.key.code == sf::Keyboard::Num3) {
+        if (game.button3.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
+        {
             game.spawnDelay = 42;
             game.speed = -11.f;
             game.mapselect = true;
         }
+
     }
     else if (!game.gameStarted && game.mapselect && event.type == sf::Event::KeyPressed)
     {
@@ -63,6 +82,9 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
     {
         //window.draw(game.menuText);
         window.draw(game.menuimg);
+        window.draw(game.button);
+        window.draw(game.button2);
+        window.draw(game.button3);
     }
     else if (game.mapselect && !game.gameStarted)
     {
