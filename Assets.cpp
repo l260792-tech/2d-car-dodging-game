@@ -9,22 +9,25 @@ bool loadAssets(GameData& game)
     game.menuimg.setTexture(game.menutex);
     game.menuimg.setScale(1280.f / game.menutex.getSize().x, 720.f / game.menutex.getSize().y);
 
+    game.selectex.loadFromFile("assets/select.jpeg");
+    game.selectimg.setTexture(game.selectex);
+    game.selectimg.setScale(1280.f / game.selectex.getSize().x, 720.f / game.selectex.getSize().y);
+
     game.carTex[0].loadFromFile("assets/enemy.png");
     game.carTex[1].loadFromFile("assets/enemy2.png");
     game.car.setScale(Vector2f(0.235f, 0.235f));
-
-    game.Roadtex.loadFromFile("assets/road.jpeg");
-    game.Road.setTexture(game.Roadtex);
-    game.Road.setScale(1280.f / game.Roadtex.getSize().x, 720.f / game.Roadtex.getSize().y);
+    
+    //update3
+    game.Roadtex[0].loadFromFile("assets/new.png");
+    game.Roadtex[1].loadFromFile("assets/road.jpeg");
+ 
 
     //update2 
     game.Gameovtex.loadFromFile("assets/gameover.jpeg");
     game.Gameovimg.setTexture(game.Gameovtex);
     game.Gameovimg.setScale(1280.f / game.Gameovtex.getSize().x, 720.f / game.Gameovtex.getSize().y);
 
-    game.Road2.setTexture(game.Roadtex);
-    game.Road2.setScale(1280.f / game.Roadtex.getSize().x, 720.f / game.Roadtex.getSize().y);
-    game.Road2.setPosition(1280.f, 0.f); // a second copy to loop
+  
 
     game.playerTex.loadFromFile("assets/car.png");
     game.player.setTexture(game.playerTex);
