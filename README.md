@@ -77,9 +77,16 @@ Use the SFML package built for the same Visual Studio version and platform. The 
 
 ## Controls
 
+1. While in the Main Menu
 - `1` — Easy mode
 - `2` — Medium mode
 - `3` — Hard mode
+  
+2. While in the Map Select Screen
+- `1` - Map 1
+- `2` - Map 2
+- `3` - Map 3
+  
 - `Up` / `Down` arrows — Move the player's car
 - `Esc` — Return to the menu after game over
 
