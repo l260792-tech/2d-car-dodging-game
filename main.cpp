@@ -30,8 +30,8 @@ int main() {
         window.draw(game.Road2);// end
         
         if (game.gameStarted && !game.gameOver) {
-            game.Road.move(game.speed, 0.f);
-            game.Road2.move(game.speed, 0.f);
+            game.Road.move(game.speed*0.8f, 0.f);
+            game.Road2.move(game.speed*0.8f, 0.f);
 
             if (game.Road.getPosition().x <= -1280.f)
             {

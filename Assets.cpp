@@ -18,9 +18,26 @@ bool loadAssets(GameData& game)
     game.car.setScale(Vector2f(0.235f, 0.235f));
     
     //update3
-    game.Roadtex[0].loadFromFile("assets/new.png");
+    game.Roadtex[0].loadFromFile("assets/desert3.png");
     game.Roadtex[1].loadFromFile("assets/road.jpeg");
  
+
+    //8pm
+    game.buttontex.loadFromFile("assets/easy.png");
+    game.button.setTexture(game.buttontex);
+    game.button.setScale(.174f,.16f);
+    game.button.setPosition(475.f, 458.f);
+
+    game.button2tex.loadFromFile("assets/medium.png");
+    game.button2.setTexture(game.button2tex);
+    game.button2.setScale(.172f, .16f);
+    game.button2.setPosition(475.f, 523.f);
+
+    game.button3tex.loadFromFile("assets/hard.png");
+    game.button3.setTexture(game.button3tex);
+    game.button3.setScale(.167f, .16f);
+    game.button3.setPosition(475.f, 584.f);
+
 
     //update2 
     game.Gameovtex.loadFromFile("assets/gameover.jpeg");
@@ -32,7 +49,7 @@ bool loadAssets(GameData& game)
     game.playerTex.loadFromFile("assets/car.png");
     game.player.setTexture(game.playerTex);
     game.player.setScale(0.2f, 0.2f);
-    game.player.setPosition(Vector2f(0.f, 330.f));
+    game.player.setPosition(Vector2f(30.f, 330.f));
 
     if (!game.menuFont.loadFromFile("assets/PressStart2P-Regular.ttf"))
     {
