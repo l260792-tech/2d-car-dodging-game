@@ -18,6 +18,14 @@ struct GameData {
     sf::Texture powerUpTextures[2];
     sf::Texture Roadtex[2];
 
+    //8 pm
+    sf::Sprite button;
+    sf::Texture buttontex;
+    sf::Texture button2tex;
+    sf::Texture button3tex;
+    sf::Sprite button2;
+    sf::Sprite button3;
+
     sf::Texture selectex;
     sf::Sprite selectimg;
 
@@ -53,7 +61,11 @@ struct GameData {
     bool touch = false;
     bool gameOver = false;
     float speed = -7.f;
-    float spawnYPositions[3] = { 170.f, 330.f, 490.f };
+    float spawnPositions[3][2] = {
+        {1280.f,160.f},
+        {1280.f,320.f},
+        {1280.f,490.f}
+    };
 
     std::vector<PowerUp> powerUps;
     int powerUpSpawnTimer = 0;
