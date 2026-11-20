@@ -1,22 +1,50 @@
 #include "Menu.h"
 #include <string>
-
-void handleMenuEvent(GameData& game, const sf::Event& event)
-{
-    if (!game.gameStarted && event.type == sf::Event::KeyPressed) {
+// menu, game over
+void handleMenuEvent(GameData& game, const sf::Event& event) {
+    if (!game.gameStarted && !game.mapselect && event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Num1) {
-            game.spawnDelay = 70; game.gameStarted = true; game.speed = -7.f;
+            game.spawnDelay = 70;
+            game.speed = -7.f;
+            game.mapselect = true;
         }
         else if (event.key.code == sf::Keyboard::Num2) {
-            game.spawnDelay = 55; game.gameStarted = true; game.speed = -8.5f;
+            game.spawnDelay = 55;
+            game.speed = -8.5f;
+            game.mapselect = true;
         }
         else if (event.key.code == sf::Keyboard::Num3) {
-            game.spawnDelay = 42; game.gameStarted = true; game.speed = -11.f;
+            game.spawnDelay = 42;
+            game.speed = -11.f;
+            game.mapselect = true;
         }
     }
-
-    if (game.gameOver && event.type == sf::Event::KeyPressed &&
-        event.key.code == sf::Keyboard::Escape) {
+    else if (!game.gameStarted && game.mapselect && event.type == sf::Event::KeyPressed)
+    {
+        if (event.key.code == sf::Keyboard::Num1)
+        {
+            game.Road.setTexture(game.Roadtex[0], true);
+            game.Road2.setTexture(game.Roadtex[0], true);
+            game.Road.setScale(1280.f / game.Roadtex[0].getSize().x, 720.f / game.Roadtex[0].getSize().y);
+            game.Road2.setScale(1280.f / game.Roadtex[0].getSize().x, 720.f / game.Roadtex[0].getSize().y);
+            game.Road.setPosition(0.f, 0.f);
+            game.Road2.setPosition(1280.f, 0.f); // a second copy to loop
+            game.mapselect = false;
+            game.gameStarted = true;
+        }
+        else if (event.key.code == sf::Keyboard::Num2)
+        {
+            game.Road.setTexture(game.Roadtex[1], true);
+            game.Road2.setTexture(game.Roadtex[1], true); // true resets rectangle size for scaling
+            game.Road.setScale(1280.f / game.Roadtex[1].getSize().x, 720.f / game.Roadtex[1].getSize().y);
+            game.Road2.setScale(1280.f / game.Roadtex[1].getSize().x, 720.f / game.Roadtex[1].getSize().y);
+            game.Road.setPosition(0.f, 0.f);
+            game.Road2.setPosition(1280.f, 0.f); // a second copy to loop
+            game.mapselect = false;
+            game.gameStarted = true;
+        }
+    }
+    if (game.gameOver && event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
         game.gameOver = false;
         game.carSpawnTimer = 15;
         game.score = 0;
@@ -26,29 +54,27 @@ void handleMenuEvent(GameData& game, const sf::Event& event)
         game.powerUpSpawnTimer = 0;
         game.shieldActive = false;
         game.slowTrafficTimer = 0;
-
-
         game.gameStarted = false;
     }
 }
 
-void drawMenuAndHud(GameData& game, sf::RenderWindow& window)
-{
-   if (!game.gameStarted) 
+void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
+    if (!game.gameStarted && !game.mapselect)
     {
         //window.draw(game.menuText);
         window.draw(game.menuimg);
     }
+    else if (game.mapselect && !game.gameStarted)
+    {
+        window.draw(game.selectimg);
+    }
     else if (game.gameOver) {
         //window.draw(game.GameOver);
-        //update
+        //UPDATE 2 
         window.draw(game.Gameovimg);
         game.player.setPosition(sf::Vector2f(0.f, 330.f));
     }
-    game.Score.setString(
-        "Score: " + std::to_string(game.score) +
-        "   High score: " + std::to_string(game.highScore)
-    );
+    game.Score.setString("Score: " + std::to_string(game.score) + "   High score: " + std::to_string(game.highScore));
     window.draw(game.Score);
 
     if (game.gameStarted && !game.gameOver) {
@@ -84,9 +110,7 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window)
             barBackground.setFillColor(sf::Color(60, 60, 60));
             window.draw(barBackground);
 
-            sf::RectangleShape barFill(
-                sf::Vector2f(fullBarWidth * remainingRatio, 16.f)
-            );
+            sf::RectangleShape barFill(sf::Vector2f(fullBarWidth * remainingRatio, 16.f));
             barFill.setPosition(50.f, 620.f);
             barFill.setFillColor(sf::Color::Yellow);
             window.draw(barFill);
@@ -103,8 +127,3 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window)
         }
     }
 }
-
-
-
-
-
