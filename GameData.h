@@ -48,6 +48,9 @@ struct GameData {
     sf::Sprite cardp2;
     sf::Sprite cardp3;
 
+    sf::Texture pausetex;
+    sf::Sprite pauseimg;
+
     sf::Texture cardtex1;
     sf::Texture cardtex2;
     sf::Texture cardtex3;
