@@ -2,36 +2,40 @@
 #include <string>
 // menu, game over
 void handleMenuEvent(GameData& game, const sf::Event& event) {
+    if (event.type == sf::Event::KeyPressed && event.KeyPressed == sf::Keyboard::P && game.gameStarted && !game.gameOver)
+    {
+        game.Pause = !game.Pause;
+    }
     if (!game.gameStarted && !game.mapselect && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-
-        if (game.button.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
-        {
-            game.click.setLoop(false);
-            game.click.setVolume(40.f);
-            game.click.play();
-            game.spawnDelay = 70;
-            game.speed = -7.f;
-            game.mapselect = true;
-        }
-        if (game.button2.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
-        {
-            game.click.setLoop(false);
-            game.click.setVolume(40.f);
-            game.click.play();
-            game.spawnDelay = 55;
-            game.speed = -8.5f;
-            game.mapselect = true;
-        }
-        if (game.button3.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
-        {
-            game.click.setLoop(false);
-            game.click.setVolume(40.f);
-            game.click.play();
-            game.spawnDelay = 42;
-            game.speed = -11.f;
-            game.mapselect = true;
-        }
-
+        
+       if (game.button.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
+       {
+           game.click.setLoop(false);
+           game.click.setVolume(40.f);
+           game.click.play();
+           game.spawnDelay = 70;
+           game.speed = -7.f;
+           game.mapselect = true;
+       }
+       if (game.button2.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
+       {
+           game.click.setLoop(false);
+           game.click.setVolume(40.f);
+           game.click.play();
+           game.spawnDelay = 55;
+           game.speed = -8.5f;
+           game.mapselect = true;
+       }
+       if (game.button3.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
+       {
+           game.click.setLoop(false);
+           game.click.setVolume(40.f);
+           game.click.play();
+           game.spawnDelay = 42;
+           game.speed = -11.f;
+           game.mapselect = true;
+       }
+        
     }
     //
     else if (!game.gameStarted && !game.playerselect && game.mapselect && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
@@ -101,8 +105,9 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
         }
 
     }
+   
+   
 
-    
     else if (!game.gameStarted && !game.mapselect && game.playerselect && event.type == sf::Event::KeyPressed) //11pm
     {
         if (event.key.code == sf::Keyboard::Num1)
@@ -141,7 +146,7 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
     }
 
 
-
+  
     if (game.gameOver)
     {
         if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
@@ -158,7 +163,7 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
             game.menumusic.stop();
 
             game.powerUps.clear();
-            game.powerUpSpawnTimer = 0;
+            game.powerUpSpawnTimer = 0; 
             game.shieldActive = false;
             game.slowTrafficTimer = 0;
             game.gameStarted = false;
@@ -175,7 +180,7 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
 }
 
 void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
-    if (!game.gameStarted && !game.mapselect && !game.playerselect)
+    if (!game.gameStarted && !game.mapselect && !game.playerselect) 
     {
         //window.draw(game.menuText);
         window.draw(game.menuimg);
@@ -186,7 +191,9 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
     else if (game.mapselect && !game.gameStarted && !game.playerselect)
     {
         window.draw(game.selectimg);
-       
+        /*window.draw(game.mbutton1);
+        window.draw(game.mbutton2);
+        window.draw(game.mbutton3);*/
     }
     else if (game.playerselect && !game.gameStarted && !game.mapselect) //up
     {
@@ -194,10 +201,13 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
         window.draw(game.cardp1);
         window.draw(game.cardp2);
         window.draw(game.cardp3);
-        
+       /* window.draw(game.pbutton1);
+        window.draw(game.pbutton2);
+        window.draw(game.pbutton3);*/
     }
     else if (game.gameOver) {
-        
+        //window.draw(game.GameOver);
+        //UPDATE 2 
         window.draw(game.Gameovimg);
         game.player.setPosition(sf::Vector2f(0.f, 320.f));
     }
@@ -207,7 +217,8 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
     if (game.gameStarted && !game.gameOver) {
         // Show the shield icon while it is ready.
         window.draw(game.boostbar);
-        window.draw(game.boostbar2);
+        window.draw(game.boostxt);
+        /*window.draw(game.boostbar2);*/
         if (game.shieldActive) {
             sf::Sprite shieldIcon(game.powerUpTextures[0]);
             shieldIcon.setScale(0.25f, 0.25f); // 128px image displays at 32px
@@ -231,7 +242,8 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
             window.draw(slowIcon);
 
             const float fullBarWidth = 220.f;
-            const float remainingRatio = static_cast<float>(game.slowTrafficTimer) / 600.f;
+            const float remainingRatio =
+                static_cast<float>(game.slowTrafficTimer) / 600.f;
 
             sf::RectangleShape barBackground(sf::Vector2f(fullBarWidth, 16.f));
             barBackground.setPosition(50.f, 620.f);
