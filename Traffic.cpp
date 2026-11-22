@@ -19,9 +19,12 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
         spdelay = game.spawnDelay * 3 / 4;
         pupdelay = game.powerUpSpawnDelay * 3 / 4;
     }
-
-
+   
     float trafficSpeed = game.speed;
+    if (game.isboost) {
+        trafficSpeed *= 3.f;
+    }
+  
 
     if (game.slowTrafficTimer > 0) 
     {
@@ -40,7 +43,7 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
             game.score++;
         }
     }
-
+    
     if (game.carSpawnTimer < spdelay) 
         game.carSpawnTimer++;
     if (game.carSpawnTimer >= spdelay) 
@@ -53,7 +56,6 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
         game.carSpawnTimer = 0;
     }
 
-    // Count frames until the next powerup appears.
     game.powerUpSpawnTimer++;
     if (game.powerUpSpawnTimer >= pupdelay) 
     {
@@ -139,11 +141,16 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
         if (game.nearmisstim==0 && game.hitbox.getGlobalBounds().intersects(game.cars[i].getGlobalBounds()))
         {
             game.score += 3;
-            game.nearmisstim = 90;
+            if (game.speed > -10)
+                game.nearmisstim = 60;
+            else if (game.speed > -20)
+                game.nearmisstim = 40;
+            else
+                game.nearmisstim = 30;
             game.disptim = 80;
         }
 
-        // Preserve the existing check for a car passing the player.
+        
         if (game.cars[i].getPosition().x + game.cars[i].getGlobalBounds().width < game.player.getPosition().x + game.player.getGlobalBounds().width) 
         {
             game.touch = true;
@@ -176,6 +183,7 @@ void drawTrafficAndPlayer(GameData& game, sf::RenderWindow& window)
     {
         game.neardisp.setString("");
     }
+    window.draw(game.boostbar);
     window.draw(game.neardisp);
     window.draw(game.player);
 }
