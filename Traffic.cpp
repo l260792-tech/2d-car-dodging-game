@@ -12,6 +12,14 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
         game.disptim--;
     }
 
+    int spdelay = game.spawnDelay;
+    int pupdelay = game.powerUpSpawnDelay;
+    if (game.isboost)
+    {
+        spdelay = game.spawnDelay * 3 / 4;
+        pupdelay = game.powerUpSpawnDelay * 3 / 4;
+    }
+
 
     float trafficSpeed = game.speed;
 
