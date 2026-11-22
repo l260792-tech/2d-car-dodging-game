@@ -14,6 +14,18 @@ void updatePlayer(GameData& game)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && game.player.getPosition().y < 580.f - game.player.getGlobalBounds().height)
         game.player.move(sf::Vector2f(0.f, 7.f));
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && game.boostdelay == 0 && !game.isboost )
+	{
+    	game.isboost = true;
+    	game.boosttimer = 60;
+    	if (game.boostm.openFromFile("assets/boost.wav"))
+    	{
+        	game.boostm.setLoop(false);
+        	game.boostm.setVolume(30.f);
+        	game.boostm.play();
+    	}
+	}
+
     float ypos = game.player.getPosition().y; //this code block is for resetting the car if it goes out of bounds of the road
 	
     if (ypos < 140.f)
