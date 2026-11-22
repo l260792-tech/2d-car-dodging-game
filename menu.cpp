@@ -198,6 +198,10 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
             game.shieldActive = false;
             game.slowTrafficTimer = 0;
             game.gameStarted = false;
+            game.boosttimer = 0;
+            game.boostdelay = 0;
+            game.isboost = false;
+            game.isboostdelay = false;
             if (game.menumusic.getStatus() != sf::Music::Playing) //new
             {
                 game.menumusic.play();
@@ -243,6 +247,8 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
 
     if (game.gameStarted && !game.gameOver) {
         // Show the shield icon while it is ready.
+        window.draw(game.boostbar);
+        window.draw(game.boostbar2);
         if (game.shieldActive) {
             sf::Sprite shieldIcon(game.powerUpTextures[0]);
             shieldIcon.setScale(0.25f, 0.25f); // 128px image displays at 32px
