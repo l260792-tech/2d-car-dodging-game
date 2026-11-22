@@ -186,9 +186,7 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
     else if (game.mapselect && !game.gameStarted && !game.playerselect)
     {
         window.draw(game.selectimg);
-        /*window.draw(game.mbutton1);
-        window.draw(game.mbutton2);
-        window.draw(game.mbutton3);*/
+       
     }
     else if (game.playerselect && !game.gameStarted && !game.mapselect) //up
     {
@@ -196,13 +194,10 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
         window.draw(game.cardp1);
         window.draw(game.cardp2);
         window.draw(game.cardp3);
-        /* window.draw(game.pbutton1);
-         window.draw(game.pbutton2);
-         window.draw(game.pbutton3);*/
+        
     }
     else if (game.gameOver) {
-        //window.draw(game.GameOver);
-        //UPDATE 2 
+        
         window.draw(game.Gameovimg);
         game.player.setPosition(sf::Vector2f(0.f, 320.f));
     }
