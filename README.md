@@ -87,7 +87,8 @@ Use the SFML package built for the same Visual Studio version and platform. The 
 - `1` Red Runner
 - `2` Blue Cruiser
 - `3` Red Racer
-
+  
+4. While in Game
 - `Up` / `Down` arrows - Movement
 - `Space` - Boost 
 - `Esc` — Return to the menu after game over
