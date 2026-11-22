@@ -15,32 +15,44 @@ void updatePlayer(GameData& game)
         game.player.move(sf::Vector2f(0.f, 7.f));
 
 	if (game.boosttimer > 0) 
-{
-    game.boosttimer--;
-
-    if (game.boosttimer == 0) 
-    {
-        game.isboost = false;
-        game.boostdelay = 600;
-    }
-}
-
-if (game.boostdelay > 0) 
-{
-    game.boostdelay--;
-}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && game.boostdelay == 0 && !game.isboost )
 	{
-    	game.isboost = true;
-    	game.boosttimer = 60;
-    	if (game.boostm.openFromFile("assets/boost.wav"))
+    	game.boosttimer--;
+
+    	if (game.boosttimer == 0) 
     	{
-        	game.boostm.setLoop(false);
-        	game.boostm.setVolume(30.f);
-        	game.boostm.play();
+        	game.isboost = false;
+        	game.boostdelay = 600;
     	}
 	}
+
+	if (game.boostdelay > 0) 
+	{
+    	game.boostdelay--;
+	}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && game.boostdelay == 0 && !game.isboost )
+		{
+    		game.isboost = true;
+    		game.boosttimer = 60;
+    		if (game.boostm.openFromFile("assets/boost.wav"))
+    		{
+        		game.boostm.setLoop(false);
+        		game.boostm.setVolume(30.f);
+        		game.boostm.play();
+    		}
+		}
+	float barwidthratio = 1.f;
+
+	if (game.boosttimer > 0)
+	{
+    	barwidthratio = static_cast<float>(game.boosttimer) / 60.f;
+	}
+	else if (game.boostdelay > 0)
+	{
+    	barwidthratio = 1.f - static_cast<float>(game.boostdelay) / 600.f;
+	}
+
+	game.boostbar.setSize(sf::Vector2f(200.f * barwidthratio,25.f));
 
     float ypos = game.player.getPosition().y; //this code block is for resetting the car if it goes out of bounds of the road
 	
