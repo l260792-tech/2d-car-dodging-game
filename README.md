@@ -6,9 +6,9 @@ A 2-D car dodging game created written in C++ using SFML. Use up and down arrow 
 
 | Name | Roll number | Tasks |
 |---|---|---|
-| Muhammad Tayyab | 26L-0765 | Main game loop, shared game data, asset loading, car selection, near-miss scoring system |
+| Muhammad Tayyab | 26L-0765 | Main game loop, shared game data, asset loading, car selection, near-miss scoring system, boost |
 | Muhammad Asim | 26L-0792 | Traffic movement and spawning, collisions, scoring, and power-ups |
-| Maryam Sajjad | 26L-0851 | Menu events, difficulty selection, and on-screen interface |
+| Maryam Sajjad | 26L-0851 | Menu events, difficulty selection, pause screen |
 
 ## Features
 
