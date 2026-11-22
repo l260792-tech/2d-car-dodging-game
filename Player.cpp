@@ -14,6 +14,22 @@ void updatePlayer(GameData& game)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && game.player.getPosition().y < 580.f - game.player.getGlobalBounds().height)
         game.player.move(sf::Vector2f(0.f, 7.f));
 
+	if (game.boosttimer > 0) 
+{
+    game.boosttimer--;
+
+    if (game.boosttimer == 0) 
+    {
+        game.isboost = false;
+        game.boostdelay = 600;
+    }
+}
+
+if (game.boostdelay > 0) 
+{
+    game.boostdelay--;
+}
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && game.boostdelay == 0 && !game.isboost )
 	{
     	game.isboost = true;
