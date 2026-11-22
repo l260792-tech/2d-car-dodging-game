@@ -34,8 +34,8 @@ int main() {
             roadspd *= 3.f;
         }
         if (game.gameStarted && !game.gameOver) {
-            game.Road.move(game.speed*0.8f, 0.f);
-            game.Road2.move(game.speed*0.8f, 0.f);
+            game.Road.move(roadspd*0.8f, 0.f);
+            game.Road2.move(roadspd*0.8f, 0.f);
 
             if (game.Road.getPosition().x <= -1280.f)
             {
