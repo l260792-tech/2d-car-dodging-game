@@ -231,8 +231,7 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
             window.draw(slowIcon);
 
             const float fullBarWidth = 220.f;
-            const float remainingRatio =
-                static_cast<float>(game.slowTrafficTimer) / 600.f;
+            const float remainingRatio = static_cast<float>(game.slowTrafficTimer) / 600.f;
 
             sf::RectangleShape barBackground(sf::Vector2f(fullBarWidth, 16.f));
             barBackground.setPosition(50.f, 620.f);
