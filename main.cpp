@@ -28,7 +28,11 @@ int main() {
 
         window.draw(game.Road);
         window.draw(game.Road2);// end
-        
+        float roadspd = game.spd;
+        if (game.isboost)
+        {
+            roadspd *= 3.f;
+        }
         if (game.gameStarted && !game.gameOver) {
             game.Road.move(game.speed*0.8f, 0.f);
             game.Road2.move(game.speed*0.8f, 0.f);
