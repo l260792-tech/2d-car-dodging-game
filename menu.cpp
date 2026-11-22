@@ -102,43 +102,7 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
 
     }
 
-    //else if (!game.gameStarted && !game.mapselect && game.playerselect && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) //11pm
-    //{ 
-
-    //    if (game.pbutton1.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
-    //    {
-    //        game.click.setLoop(false);
-    //        game.click.setVolume(40.f);
-    //        game.click.play();
-    //        game.player.setTexture(game.Playertex[0], true);
-    //        game.player.setScale(0.23f,0.23f);
-    //        game.player.setPosition(20.f, 320.f);
-    //        game.playerselect = false;
-    //        game.gameStarted = true;
-    //    }
-    //    else if (game.pbutton2.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
-    //    {
-    //        game.click.setLoop(false);
-    //        game.click.setVolume(40.f);
-    //        game.click.play();
-    //        game.player.setTexture(game.Playertex[1], true);
-    //        game.player.setScale(0.47f, 0.47f);
-    //        game.player.setPosition(20.f, 320.f);
-    //        game.playerselect = false;
-    //        game.gameStarted = true;
-    //    }
-    //    else if (game.pbutton3.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
-    //    {
-    //        game.click.setLoop(false);
-    //        game.click.setVolume(40.f);
-    //        game.click.play();
-    //        game.player.setTexture(game.Playertex[2], true);
-    //        game.player.setScale(0.23f, 0.23f);
-    //        game.player.setPosition(20.f, 310.f);
-    //        game.playerselect = false;
-    //        game.gameStarted = true;
-    //    }
-    //}
+    
     else if (!game.gameStarted && !game.mapselect && game.playerselect && event.type == sf::Event::KeyPressed) //11pm
     {
         if (event.key.code == sf::Keyboard::Num1)
