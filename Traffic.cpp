@@ -41,9 +41,9 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
         }
     }
 
-    if (game.carSpawnTimer < game.spawnDelay) 
+    if (game.carSpawnTimer < spdelay) 
         game.carSpawnTimer++;
-    if (game.carSpawnTimer >= game.spawnDelay) 
+    if (game.carSpawnTimer >= spdelay) 
     {
         int spawnIndex = std::rand() % 3;
         int texind = std::rand() % 2;
@@ -55,7 +55,7 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
 
     // Count frames until the next powerup appears.
     game.powerUpSpawnTimer++;
-    if (game.powerUpSpawnTimer >= game.powerUpSpawnDelay) 
+    if (game.powerUpSpawnTimer >= pupdelay) 
     {
         PowerUp item;
         item.type = std::rand() % 2; // Randomly choose shield or slow traffic.
