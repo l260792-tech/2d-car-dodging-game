@@ -78,16 +78,18 @@ Use the SFML package built for the same Visual Studio version and platform. The 
 ## Controls
 
 1. While in the Main Menu
-- `1` — Easy mode
-- `2` — Medium mode
-- `3` — Hard mode
+- Click to choose difficulty
   
 2. While in the Map Select Screen
-- `1` - Map 1
-- `2` - Map 2
-- `3` - Map 3
+- Click to choose the map
   
-- `Up` / `Down` arrows — Move the player's car
+3. While in the Character Select Screen
+- `1` Red Runner
+- `2` Blue Cruiser
+- `3` Red Racer
+
+- `Up` / `Down` arrows - Movement
+- `Space` - Boost 
 - `Esc` — Return to the menu after game over
 
 The pause function using `P` to pause and `X` to unpause are yet to be implemented
