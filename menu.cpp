@@ -2,7 +2,7 @@
 #include <string>
 // menu, game over
 void handleMenuEvent(GameData& game, const sf::Event& event) {
-    if (event.type == sf::Event::KeyPressed && event.KeyPressed == sf::Keyboard::P && game.gameStarted && !game.gameOver)
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::P && game.gameStarted && !game.gameOver)
     {
         game.Pause = !game.Pause;
     }
@@ -210,6 +210,10 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
         //UPDATE 2 
         window.draw(game.Gameovimg);
         game.player.setPosition(sf::Vector2f(0.f, 320.f));
+    }
+    if (game.Pause)
+    {
+        window.draw(game.pauseimg);
     }
     game.Score.setString("Score: " + std::to_string(game.score) + "   High score: " + std::to_string(game.highScore));
     window.draw(game.Score);
