@@ -151,10 +151,7 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
         }
 
         
-        if (game.cars[i].getPosition().x + game.cars[i].getGlobalBounds().width < game.player.getPosition().x + game.player.getGlobalBounds().width) 
-        {
-            game.touch = true;
-        }
+       
     }
 
     if (game.speed > -30.f)
@@ -186,3 +183,4 @@ void drawTrafficAndPlayer(GameData& game, sf::RenderWindow& window)
     window.draw(game.neardisp);
     window.draw(game.player);
 }
+
