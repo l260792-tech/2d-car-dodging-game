@@ -87,7 +87,6 @@ struct GameData {
     bool playerselect = false;
     bool mapselect = false;
     bool Pause = false;
-    bool touch = false;
     bool gameOver = false;
     float speed = -7.f;
     float spawnPositions[3][2] = {
