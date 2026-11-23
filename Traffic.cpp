@@ -183,7 +183,6 @@ void drawTrafficAndPlayer(GameData& game, sf::RenderWindow& window)
     {
         game.neardisp.setString("");
     }
-    window.draw(game.boostbar);
     window.draw(game.neardisp);
     window.draw(game.player);
 }
