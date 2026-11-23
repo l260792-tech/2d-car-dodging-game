@@ -19,6 +19,9 @@ bool loadAssets(GameData& game)
 
     game.boostbar.setFillColor(Color::Red);
     game.boostbar.setPosition(540.f, 610.f);
+   /* game.boostbar2.setFillColor(Color::Red);
+    game.boostbar2.setPosition(400.f, 600.f);
+    */
 
     if (game.menumusic.openFromFile("assets/sonic.wav"))
     {
@@ -78,6 +81,9 @@ bool loadAssets(GameData& game)
     game.cardp3.setScale(.6f, .6f);
     game.cardp3.setPosition(845.f, 357.f);
 
+    game.pausetex.loadFromFile("assets/pause.jpeg");
+    game.pauseimg.setTexture(game.pausetex);
+    game.pauseimg.setScale(1280.f / game.pausetex.getSize().x, 720.f / game.pausetex.getSize().y);
 
 
     //update2 
@@ -88,6 +94,12 @@ bool loadAssets(GameData& game)
     game.carselectex.loadFromFile("assets/carselect.jpeg");
     game.carselect.setTexture(game.carselectex);
     game.carselect.setScale(1280.f / game.carselectex.getSize().x, 720.f / game.carselectex.getSize().y);
+  
+
+    /*game.playerTex.loadFromFile("assets/car.png");
+    game.player.setTexture(game.playerTex);
+    game.player.setScale(0.2f, 0.2f);
+    game.player.setPosition(Vector2f(30.f, 330.f));*/
 
     game.Playertex[2].loadFromFile("assets/player4.png");
     game.Playertex[1].loadFromFile("assets/player3.png");
@@ -155,7 +167,12 @@ bool loadAssets(GameData& game)
     {
         return false;
     }
-    
+    /*if (game.backgroundMusic.openFromFile("assets/TM1.wav"))
+    {
+        game.backgroundMusic.setLoop(true);
+        game.backgroundMusic.setVolume(30.f);
+        game.backgroundMusic.play();
+    }*/
     std::ifstream scoreFile("highscore.txt");
     if (scoreFile.is_open())
     {
