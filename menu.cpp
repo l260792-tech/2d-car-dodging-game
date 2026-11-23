@@ -6,6 +6,36 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
     {
         game.Pause = !game.Pause;
     }
+    if (game.Pause && event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+    {
+        game.click.setLoop(false);
+        game.click.setVolume(40.f);
+        game.click.play();
+        game.Pause = false;
+        game.gameStarted = false;
+        game.playerselect = false;
+        game.mapselect = false;
+        game.carSpawnTimer = 15;
+        game.disptim = 0;
+        game.score = 0;
+        game.cars.clear();
+        game.nearmisstim = 0;
+        game.menumusic.stop();
+        game.backgroundMusic.stop();
+        game.powerUps.clear();
+        game.powerUpSpawnTimer = 0;
+        game.shieldActive = false;
+        game.slowTrafficTimer = 0;
+        game.boosttimer = 0;
+        game.boostdelay = 0;
+        game.isboost = false;
+        game.isboostdelay = false;
+        if (game.menumusic.getStatus() != sf::Music::Playing) //new
+        {
+            game.menumusic.play();
+        }
+
+    }
     if (!game.gameStarted && !game.mapselect && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
         
        if (game.button.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
@@ -211,10 +241,6 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
         window.draw(game.Gameovimg);
         game.player.setPosition(sf::Vector2f(0.f, 320.f));
     }
-    if (game.Pause)
-    {
-        window.draw(game.pauseimg);
-    }
     game.Score.setString("Score: " + std::to_string(game.score) + "   High score: " + std::to_string(game.highScore));
     window.draw(game.Score);
 
@@ -268,6 +294,10 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
             timerLabel.setString(std::to_string(secondsLeft) + "s");
             timerLabel.setPosition(280.f, 625.f);
             window.draw(timerLabel);
+        }
+        if (game.Pause)
+        {
+            window.draw(game.pauseimg);
         }
     }
 }
