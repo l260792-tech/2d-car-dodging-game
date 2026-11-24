@@ -8,7 +8,11 @@
 int main() {
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Car Dodging Game");
     window.setFramerateLimit(60);
-
+     sf::Image icon;
+     if (icon.loadFromFile("assets/icon.png"))
+     {
+     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+     }
     GameData game;
     if (!loadAssets(game)) {
         std::cerr << "Could not load the menu font. Check your asset paths.\n";
