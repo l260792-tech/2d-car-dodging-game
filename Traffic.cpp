@@ -1,6 +1,7 @@
 #include "Traffic.h"
 #include <cstdlib>
 #include <fstream>
+#include<string>
 //traffic logic
 void updateTraffic(GameData& game, const sf::RenderWindow& window) {
     // Use half speed while the slow-traffic powerup is active.
@@ -110,7 +111,66 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
             i--; //indexes shift to left 1--->0 2--->1
         }
     }
+    //coins
+    int coindelay = game.coinSpawnDelay;
+    if (game.isboost)
+        coindelay = game.coinSpawnDelay * 3 / 4;
 
+    game.coinSpawnTimer++;
+    if (game.coinSpawnTimer >= coindelay)
+    {
+        Coin c;
+        c.sprite.setTexture(game.coinTex);
+
+        sf::Vector2u sz = game.coinTex.getSize();
+        if (sz.x > 0 && sz.y > 0)
+        {
+            float s = 40.f / static_cast<float>(sz.x > sz.y ? sz.x : sz.y);
+            c.sprite.setScale(s, s);
+            c.sprite.setOrigin(sz.x / 2.f, sz.y / 2.f);
+        }
+
+        int lane = std::rand() % 3;
+        c.sprite.setPosition(game.spawnPositions[lane][0] + 220.f,
+            game.spawnPositions[lane][1] + 35.f);
+
+        // don't spawn on car or power-up
+        bool blocked = false;
+        for (int i = 0; i < static_cast<int>(game.cars.size()); i++)
+            if (c.sprite.getGlobalBounds().intersects(game.cars[i].getGlobalBounds()))
+                blocked = true;
+        for (int i = 0; i < static_cast<int>(game.powerUps.size()); i++)
+            if (c.sprite.getGlobalBounds().intersects(game.powerUps[i].sprite.getGlobalBounds()))
+                blocked = true;
+
+        if (!blocked)
+        {
+            game.coins.push_back(c);
+            game.coinSpawnTimer = 0;
+        }
+        
+    }
+
+    for (int i = 0; i < static_cast<int>(game.coins.size()); i++)
+    {
+        game.coins[i].sprite.move(sf::Vector2f(trafficSpeed, 0.f));
+
+        if (game.coins[i].sprite.getPosition().x < -20.f)
+        {
+            game.coins.erase(game.coins.begin() + i);
+            i--;
+            continue;
+        }
+
+        if (game.player.getGlobalBounds().intersects(game.coins[i].sprite.getGlobalBounds()))
+        {
+            game.coinCount++;
+            game.score += 5;          
+            game.coinSound.play();
+            game.coins.erase(game.coins.begin() + i);
+            i--;
+        }
+    }
     for (int i = 0; i < static_cast<int>(game.cars.size()); i++) 
     {
         if (game.player.getGlobalBounds().intersects(game.cars[i].getGlobalBounds()))
@@ -151,7 +211,7 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
         }
 
         
-       
+        
     }
 
     if (game.speed > -30.f)
@@ -172,6 +232,14 @@ void drawTrafficAndPlayer(GameData& game, sf::RenderWindow& window)
     {
         window.draw(game.powerUps[i].sprite);
     }
+
+    for (int i = 0; i < game.coins.size(); i++)
+    {
+        window.draw(game.coins[i].sprite);
+    }
+    game.coinText.setString("Coins: " + std::to_string(game.coinCount));
+    window.draw(game.coinText);
+
     if (game.disptim != 0)
     {
         game.neardisp.setString("NEAR MISS!!\n\n+3 POINTS!!");
@@ -183,4 +251,3 @@ void drawTrafficAndPlayer(GameData& game, sf::RenderWindow& window)
     window.draw(game.neardisp);
     window.draw(game.player);
 }
-
