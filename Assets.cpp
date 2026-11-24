@@ -173,6 +173,20 @@ bool loadAssets(GameData& game)
         game.backgroundMusic.setVolume(30.f);
         game.backgroundMusic.play();
     }*/
+
+     if (!game.coinTex.loadFromFile("assets/coin.png"))
+     {
+     return false;
+     }
+     game.coinSound.openFromFile("assets/coin_collect.wav");   
+     game.coinSound.setVolume(60.f);
+
+     game.coinText.setFont(game.menuFont);
+     game.coinText.setFillColor(Color::Yellow);
+     game.coinText.setOutlineColor(Color::Black);
+     game.coinText.setOutlineThickness(2.f);
+     game.coinText.setCharacterSize(16);
+     game.coinText.setPosition(10.f, 40.f);   // displaying it under the "score"
     std::ifstream scoreFile("highscore.txt");
     if (scoreFile.is_open())
     {
