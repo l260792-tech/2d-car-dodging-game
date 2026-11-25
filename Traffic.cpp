@@ -3,8 +3,9 @@
 #include <fstream>
 #include<string>
 //traffic logic
-void updateTraffic(GameData& game, const sf::RenderWindow& window) {
-    // Use half speed while the slow-traffic powerup is active.
+void updateTraffic(GameData& game, const sf::RenderWindow& window) 
+{
+  
 
     if (game.nearmisstim > 0) {
         game.nearmisstim--;
@@ -61,12 +62,10 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
     if (game.powerUpSpawnTimer >= pupdelay) 
     {
         PowerUp item;
-        item.type = std::rand() % 2; // Randomly choose shield or slow traffic.
+        item.type = std::rand() % 2; // choose a powerup
 
-        // Use the PNG for this powerup type: 0 = shield, 1 = slow traffic.
         item.sprite.setTexture(game.powerUpTextures[item.type]);
 
-        // Scale the image to fit within about 36 by 36 pixels.
         sf::Vector2u imageSize = game.powerUpTextures[item.type].getSize();
         if (imageSize.x > 0 && imageSize.y > 0) 
         {
@@ -84,7 +83,7 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
         game.powerUpSpawnTimer = 0;
     }
 
-    // Move powerups left and remove any that leave the screen.
+    // powerups move towards left and remove which leave the screen.
     for (int i = 0; i < static_cast<int>(game.powerUps.size()); i++) {
         game.powerUps[i].sprite.move(sf::Vector2f(trafficSpeed, 0.f));
         if (game.powerUps[i].sprite.getPosition().x < -20.f) 
@@ -94,7 +93,7 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
         }
     }
 
-    //collect powerups when car intersects with it
+    //collect powerups
     for (int i = 0; i < static_cast<int>(game.powerUps.size()); i++) 
     {
         if (game.player.getGlobalBounds().intersects(game.powerUps[i].sprite.getGlobalBounds())) 
@@ -108,10 +107,9 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
                 game.slowTrafficTimer = 600; // About 10 seconds.
             }
             game.powerUps.erase(game.powerUps.begin() + i);
-            i--; //indexes shift to left 1--->0 2--->1
+            i--; 
         }
     }
-    //coins
     int coindelay = game.coinSpawnDelay;
     if (game.isboost)
         coindelay = game.coinSpawnDelay * 3 / 4;
@@ -134,7 +132,6 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
         c.sprite.setPosition(game.spawnPositions[lane][0] + 220.f,
             game.spawnPositions[lane][1] + 35.f);
 
-        // don't spawn on car or power-up
         bool blocked = false;
         for (int i = 0; i < static_cast<int>(game.cars.size()); i++)
             if (c.sprite.getGlobalBounds().intersects(game.cars[i].getGlobalBounds()))
@@ -165,7 +162,7 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window) {
         if (game.player.getGlobalBounds().intersects(game.coins[i].sprite.getGlobalBounds()))
         {
             game.coinCount++;
-            game.score += 5;          
+            game.score += 5;       //score increment when coin is collected   
             game.coinSound.play();
             game.coins.erase(game.coins.begin() + i);
             i--;
