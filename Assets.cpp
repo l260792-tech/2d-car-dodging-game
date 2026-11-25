@@ -15,7 +15,9 @@ bool loadAssets(GameData& game)
 
     game.carTex[0].loadFromFile("assets/enemy.png");
     game.carTex[1].loadFromFile("assets/enemy2.png");
-    game.car.setScale(Vector2f(0.235f, 0.235f));
+    game.carTex[2].loadFromFile("assets/enemyy3.png");
+    game.carTex[3].loadFromFile("assets/enemm4.png");
+    game.car.setScale(Vector2f(0.147f, 0.147f));
 
     game.boostbar.setFillColor(Color::Red);
     game.boostbar.setPosition(540.f, 610.f);
