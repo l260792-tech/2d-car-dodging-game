@@ -1,6 +1,6 @@
 #include "Menu.h"
 #include <string>
-// menu, game over
+
 void handleMenuEvent(GameData& game, const sf::Event& event) {
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::P && game.gameStarted && !game.gameOver)
     {
@@ -67,7 +67,7 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
        }
         
     }
-    //
+    
     else if (!game.gameStarted && !game.playerselect && game.mapselect && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
     {
         if (game.mbutton2.getGlobalBounds().contains(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)))
@@ -80,7 +80,7 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
             game.Road.setScale(1280.f / game.Roadtex[0].getSize().x, 720.f / game.Roadtex[0].getSize().y);
             game.Road2.setScale(1280.f / game.Roadtex[0].getSize().x, 720.f / game.Roadtex[0].getSize().y);
             game.Road.setPosition(0.f, 0.f);
-            game.Road2.setPosition(1280.f, 0.f); // a second copy to loop
+            game.Road2.setPosition(1280.f, 0.f); 
             game.mapselect = false;
             game.playerselect = true;
             game.menumusic.stop();
@@ -97,11 +97,11 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
             game.click.setVolume(40.f);
             game.click.play();
             game.Road.setTexture(game.Roadtex[1], true);
-            game.Road2.setTexture(game.Roadtex[1], true); // true resets rectangle size for scaling
+            game.Road2.setTexture(game.Roadtex[1], true); // true resets size of rectangle
             game.Road.setScale(1280.f / game.Roadtex[1].getSize().x, 720.f / game.Roadtex[1].getSize().y);
             game.Road2.setScale(1280.f / game.Roadtex[1].getSize().x, 720.f / game.Roadtex[1].getSize().y);
             game.Road.setPosition(0.f, 0.f);
-            game.Road2.setPosition(1280.f, 0.f); // a second copy to loop
+            game.Road2.setPosition(1280.f, 0.f);
             game.mapselect = false;
             game.playerselect = true;
             game.menumusic.stop();
@@ -118,11 +118,11 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
             game.click.setVolume(40.f);
             game.click.play();
             game.Road.setTexture(game.Roadtex[2], true);
-            game.Road2.setTexture(game.Roadtex[2], true); // true resets rectangle size for scaling
+            game.Road2.setTexture(game.Roadtex[2], true); 
             game.Road.setScale(1280.f / game.Roadtex[2].getSize().x, 720.f / game.Roadtex[2].getSize().y);
             game.Road2.setScale(1280.f / game.Roadtex[2].getSize().x, 720.f / game.Roadtex[2].getSize().y);
             game.Road.setPosition(0.f, 0.f);
-            game.Road2.setPosition(1280.f, 0.f); // a second copy to loop
+            game.Road2.setPosition(1280.f, 0.f);
             game.mapselect = false;
             game.playerselect = true;
             game.menumusic.stop();
@@ -175,8 +175,6 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
         }
     }
 
-
-  
     if (game.gameOver)
     {
         if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
@@ -214,7 +212,6 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
 void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
     if (!game.gameStarted && !game.mapselect && !game.playerselect) 
     {
-        //window.draw(game.menuText);
         window.draw(game.menuimg);
         window.draw(game.button);
         window.draw(game.button2);
@@ -247,13 +244,13 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
     window.draw(game.Score);
 
     if (game.gameStarted && !game.gameOver) {
-        // Show the shield icon while it is ready.
+        // Show the shield icon when ready.
         window.draw(game.boostbar);
         window.draw(game.boostxt);
         /*window.draw(game.boostbar2);*/
         if (game.shieldActive) {
             sf::Sprite shieldIcon(game.powerUpTextures[0]);
-            shieldIcon.setScale(0.25f, 0.25f); // 128px image displays at 32px
+            shieldIcon.setScale(0.25f, 0.25f); 
             shieldIcon.setPosition(10.f, 55.f);
             window.draw(shieldIcon);
 
@@ -266,7 +263,7 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
             window.draw(shieldLabel);
         }
 
-        // Show the slow-powerup icon and a bar that shrinks as time runs out.
+        // Showing the slow-powerup icon and a time bar
         if (game.slowTrafficTimer > 0) {
             sf::Sprite slowIcon(game.powerUpTextures[1]);
             slowIcon.setScale(0.25f, 0.25f);
