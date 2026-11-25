@@ -125,5 +125,6 @@ struct GameData {
     int boostdelay = 0;
     bool isboost = false;
     bool isboostdelay = false;
+    bool isinstruc = false;
     
 };
