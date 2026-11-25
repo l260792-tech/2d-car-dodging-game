@@ -16,6 +16,8 @@ struct Coin {
 // Shared data from the original main() function. The modules receive this by
 // reference, so the game logic and its existing variables stay together.
 struct GameData {
+    sf::Texture instex;
+    sf::Sprite instsc;
     sf::Texture carTex[2];
     sf::Texture powerUpTextures[2];
     sf::Texture Roadtex[3];
