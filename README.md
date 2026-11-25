@@ -46,37 +46,13 @@ A 2-D car dodging game created written in C++ using SFML. Use up and down arrow 
 
 ## Setup
 
-1. Download Visual Studio 2022 64-bit and download desktop development extension
-2. Create Empty project and select x64 and Release in tool bar
-3. Add the cpp files via Solution explorer
-4. Go to top bar, right click project and select properties
-5. Under **C/C++ > General > Additional Include Directories**, add:
-   ```text
-   C:\SFML-2.6.1\include
-   ```
-6. Under **Linker > General > Additional Library Directories**, add:
-   ```text
-   C:\SFML-2.6.1\lib
-   ```
-7. Under **Linker > Input > Additional Dependencies**, add the SFML libraries:
-   - **Release:** `sfml-graphics.lib; sfml-window.lib; sfml-system.lib; sfml-audio.lib;`
-	- For Debug version, use the -d versions 
-8. Under **Configuration Properties > Debugging > Working Directory**, set the value to:
-   ```text
-   $(ProjectDir)
-   ```
-
-9. Click **apply** then seclect **ok**
-
-Use the SFML package built for the same Visual Studio version and platform. The DLLs currently included in `dll/` are Release-style DLLs, so select **Release** and **x64** when using the bundled set. Debug libraries must be paired with matching Debug DLLs; those are not currently included.
+Open `2d-car-dodging-game.sln` in Visual Studio and select **x64** with either **Debug** or **Release**. The project is configured for SFML 2.6.1 installed at `C:\SFML-2.6.1`; if SFML is installed elsewhere, update the include, library, and DLL paths in the project properties. The post-build step copies the matching SFML runtime DLLs beside the executable. The working directory is the project folder so the game can load files from `assets/`.
 
 
 ## Build and run
 
-1. Make sure the project uses the SFML include, library, and dlls.
-2. Confirm the `assets/` folder contains these files and that their names match the paths in `Assets.cpp`: `menuu.jpeg`, `enemy.png`, `enemy2.png`, `road.jpeg`, `gameover.jpeg`, `car.png`, `PressStart2P-Regular.ttf`, `powerup-shield.png`, `powerup-slow.png`, and `soft-arcade-racing-loop.wav`.
-3. Keep the working directory set to `$(ProjectDir)` and select **Release** and **x64**.
-4. Build the solution, then choose **Debug > Start Without Debugging** to run the game.
+1. Select **Release** and **x64** for a standard run (Debug and x64 is also configured).
+2. Build the solution, then choose **Debug > Start Without Debugging** to run the game.
 
 ## Controls
 

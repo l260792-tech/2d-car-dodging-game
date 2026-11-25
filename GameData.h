@@ -4,17 +4,16 @@
 #include <vector>
 #include <SFML/Audio.hpp>
 
-// A collectible circle that moves across the road.
-// STRUCT basically stores different variables 
-struct PowerUp {
+struct PowerUp 
+{
     sf::Sprite sprite;
-    int type = 0; // 0 = shield, 1 = slow traffic
+    int type = 0; 
 };
-struct Coin {
+struct Coin 
+{
     sf::Sprite sprite;
 };
-// Shared data from the original main() function. The modules receive this by
-// reference, so the game logic and its existing variables stay together.
+
 struct GameData {
     sf::Texture instex;
     sf::Sprite instsc;
@@ -36,7 +35,7 @@ struct GameData {
 
     sf::RectangleShape hitbox;
     int nearmisstim = 0;
-    //8 pm
+    
     sf::Sprite button;
     sf::Texture buttontex;
     sf::Texture button2tex;
@@ -67,11 +66,9 @@ struct GameData {
     int spawnDelay = 40;
     std::vector<sf::Sprite> cars;
 
-    //updated
     sf::Texture menutex;
     sf::Sprite menuimg;
 
-    //update 2
     sf::Texture Gameovtex;
     sf::Sprite Gameovimg;
    
@@ -90,6 +87,7 @@ struct GameData {
 
     bool playerselect = false;
     bool mapselect = false;
+    bool isinstruc = false;
     bool Pause = false;
 
     bool gameOver = false; 
@@ -108,7 +106,7 @@ struct GameData {
     sf::Texture coinTex;
     std::vector<Coin> coins;
     int coinSpawnTimer = 0;
-    int coinSpawnDelay = 120;   // spawning rate of coins
+    int coinSpawnDelay = 120;  
     int coinCount = 0;
     sf::Text coinText;
     sf::Music coinSound;
@@ -116,7 +114,7 @@ struct GameData {
     sf::Music backgroundMusic;
     sf::Music menumusic;
 
-    //boost update
+   
     sf::Music boostm;
     sf::Text boostxt;
     sf::RectangleShape boostbar;
