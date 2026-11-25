@@ -65,13 +65,14 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
            game.speed = -11.f;
            game.mapselect = true;
        }
-        if (!game.gameStarted && !game.mapselect && event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::I)
-       {
-           game.click.setLoop(false);
-           game.click.setVolume(40.f);
-           game.click.play();
-           game.isinstruc = !game.isinstruc;
-       } 
+        
+    }
+    if (!game.gameStarted && !game.mapselect && event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::I)
+    {
+        game.click.setLoop(false);
+        game.click.setVolume(40.f);
+        game.click.play();
+        game.isinstruc = !game.isinstruc;
     }
     
     else if (!game.gameStarted && !game.playerselect && game.mapselect && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
