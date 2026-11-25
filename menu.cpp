@@ -191,7 +191,9 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
             game.cars.clear();
             game.nearmisstim = 0;
             game.menumusic.stop();
-
+            game.coins.clear();
+            game.coinCount = 0;
+            game.coinSpawnTimer = 0;
             game.powerUps.clear();
             game.powerUpSpawnTimer = 0; 
             game.shieldActive = false;
