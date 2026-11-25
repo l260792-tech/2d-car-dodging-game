@@ -65,7 +65,13 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
            game.speed = -11.f;
            game.mapselect = true;
        }
-        
+        if (!game.gameStarted && !game.mapselect && event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::I)
+       {
+           game.click.setLoop(false);
+           game.click.setVolume(40.f);
+           game.click.play();
+           game.isinstruc = !game.isinstruc;
+       } 
     }
     
     else if (!game.gameStarted && !game.playerselect && game.mapselect && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
@@ -216,6 +222,10 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
         window.draw(game.button);
         window.draw(game.button2);
         window.draw(game.button3);
+        if (game.isinstruc)
+        {
+             window.draw(game.instsc);
+        }
     }
     else if (game.mapselect && !game.gameStarted && !game.playerselect)
     {
