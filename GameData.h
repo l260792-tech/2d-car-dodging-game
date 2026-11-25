@@ -18,7 +18,7 @@ struct Coin {
 struct GameData {
     sf::Texture instex;
     sf::Sprite instsc;
-    sf::Texture carTex[2];
+    sf::Texture carTex[4];
     sf::Texture powerUpTextures[2];
     sf::Texture Roadtex[3];
     sf::Texture Playertex[3];
