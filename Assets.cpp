@@ -101,6 +101,10 @@ bool loadAssets(GameData& game)
     game.click.openFromFile("assets/click.wav");
     game.crash.openFromFile("assets/crash.wav");
 
+    game.instex.loadFromFile("assets/instruc.jpeg");
+    game.instsc.setTexture(game.instex);
+    game.instsc.setScale(1280.f / game.instex.getSize().x, 720.f / game.instex.getSize().y);
+    
     game.mbutton1.setSize(Vector2f(395.f, 260.f));
     game.mbutton1.setPosition(34.f, 260.f);
     game.mbutton2.setSize(Vector2f(395.f, 260.f));
