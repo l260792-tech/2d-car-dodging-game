@@ -10,7 +10,9 @@ struct PowerUp {
     sf::Sprite sprite;
     int type = 0; // 0 = shield, 1 = slow traffic
 };
-
+struct Coin {
+    sf::Sprite sprite;
+};
 // Shared data from the original main() function. The modules receive this by
 // reference, so the game logic and its existing variables stay together.
 struct GameData {
@@ -87,7 +89,8 @@ struct GameData {
     bool playerselect = false;
     bool mapselect = false;
     bool Pause = false;
-    bool gameOver = false;
+
+    bool gameOver = false; 
     float speed = -7.f;
     float spawnPositions[3][2] = {
         {1280.f,160.f},
@@ -100,7 +103,13 @@ struct GameData {
     int powerUpSpawnDelay = 900;
     bool shieldActive = false;
     int slowTrafficTimer = 0;
-   
+    sf::Texture coinTex;
+    std::vector<Coin> coins;
+    int coinSpawnTimer = 0;
+    int coinSpawnDelay = 120;   // spawning rate of coins
+    int coinCount = 0;
+    sf::Text coinText;
+    sf::Music coinSound;
 
     sf::Music backgroundMusic;
     sf::Music menumusic;
