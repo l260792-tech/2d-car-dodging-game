@@ -51,7 +51,7 @@ void updateTraffic(GameData& game, const sf::RenderWindow& window)
     if (game.carSpawnTimer >= spdelay) 
     {
         int spawnIndex = std::rand() % 3;
-        int texind = std::rand() % 2;
+        int texind = std::rand() % 4;
         game.car.setTexture(game.carTex[texind]);
         game.car.setPosition(game.spawnPositions[spawnIndex][0],game.spawnPositions[spawnIndex][1]);
         game.cars.push_back(sf::Sprite(game.car));
