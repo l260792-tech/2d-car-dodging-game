@@ -159,14 +159,7 @@ bool loadAssets(GameData& game)
     {
         return false;
     }
-    if (!game.powerUpTextures[0].loadFromFile("assets/powerup-shield.png"))
-    {
-        return false;
-    }
-    if (!game.powerUpTextures[1].loadFromFile("assets/powerup-slow.png"))
-    {
-        return false;
-    }
+    
     /*if (game.backgroundMusic.openFromFile("assets/TM1.wav"))
     {
         game.backgroundMusic.setLoop(true);
