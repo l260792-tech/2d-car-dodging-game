@@ -1,21 +1,24 @@
 # 2D Car Dodging Game
 
-A 2-D car dodging game created written in C++ using SFML. Use up and down arrow keys to move your car while avoiding oncoming obstacles on the road.
+A 2-D car dodging game created written in C++ using SFML. Use up and down arrow keys to move your car while avoiding oncoming obstacles on the road. Use spacebar for quick boost.
 
 ## Team
 
 | Name | Roll number | Tasks |
 |---|---|---|
-| Muhammad Tayyab | 26L-0765 | Main game loop, shared game data, asset loading, car selection, near-miss scoring system, boost |
-| Muhammad Asim | 26L-0792 | Traffic movement and spawning, collisions, scoring, and power-ups |
-| Maryam Sajjad | 26L-0851 | Menu events, difficulty selection, pause screen |
+| Muhammad Tayyab | 26L-0765 | Main game loop, shared game data, asset loading, near-miss scoring system, boost , player movement, boost system |
+| Muhammad Asim | 26L-0792 | Traffic movement and spawning, collision detection, scoring, high-score management, coin collection and power-up mechanics |
+| Maryam Sajjad | 26L-0851 | Main menu events, difficulty and map selection, player car selection, pause and resume functionality, screen transitions, gameplay management|
 
 ## Features
 
 - Three difficulty levels: Easy, Medium, and Hard
-- Player car movement using arrow keys and incoming obstacles to avoid
+- On screen difficulty and map selection
+- Press 1,2 or 3 for selecting first, second or third car
+- Player car movement using up and down arrow keys and space bar for boost
 - Collision detection and a single life, with game-over screen upon first collision
 - Score counter and highscore recorded, passing each car increases the score counter by +1
+- Catching a coin adds +5 to the score
 - Enemy car speeds increase as time passes
 - One-time Shield and slow-traffic power-ups
 - Scrolling road and background music
@@ -93,4 +96,4 @@ Use the SFML package built for the same Visual Studio version and platform. The 
 - `Space` - Boost 
 - `Esc` — Return to the menu after game over
 
-The pause function using `P` to pause and `X` to unpause are yet to be implemented
+The pause function using `P` to pause and unpause
