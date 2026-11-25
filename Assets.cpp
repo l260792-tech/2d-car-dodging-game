@@ -4,7 +4,7 @@ using namespace sf;
 
 bool loadAssets(GameData& game)
 {
-    //update
+    
     game.menutex.loadFromFile("assets/menuu.jpeg");
     game.menuimg.setTexture(game.menutex);
     game.menuimg.setScale(1280.f / game.menutex.getSize().x, 720.f / game.menutex.getSize().y);
@@ -19,9 +19,6 @@ bool loadAssets(GameData& game)
 
     game.boostbar.setFillColor(Color::Red);
     game.boostbar.setPosition(540.f, 610.f);
-   /* game.boostbar2.setFillColor(Color::Red);
-    game.boostbar2.setPosition(400.f, 600.f);
-    */
 
     if (game.menumusic.openFromFile("assets/sonic.wav"))
     {
@@ -43,15 +40,13 @@ bool loadAssets(GameData& game)
     game.neardisp.setCharacterSize(16);
     game.neardisp.setPosition(Vector2f(1000.f, 40.f));
     game.neardisp.setFont(game.menuFont);
-    
-    //update3
+  
     game.Roadtex[0].loadFromFile("assets/desert3.png");
     game.Roadtex[1].loadFromFile("assets/road.png");
     game.Roadtex[2].loadFromFile("assets/coastal.png");
  
     game.hitbox.setSize(Vector2f(200.f, 140.f));
 
-    //8pm
     game.buttontex.loadFromFile("assets/easy.png");
     game.button.setTexture(game.buttontex);
     game.button.setScale(.174f,.16f);
@@ -85,8 +80,6 @@ bool loadAssets(GameData& game)
     game.pauseimg.setTexture(game.pausetex);
     game.pauseimg.setScale(1280.f / game.pausetex.getSize().x, 720.f / game.pausetex.getSize().y);
 
-
-    //update2 
     game.Gameovtex.loadFromFile("assets/gameover.jpeg");
     game.Gameovimg.setTexture(game.Gameovtex);
     game.Gameovimg.setScale(1280.f / game.Gameovtex.getSize().x, 720.f / game.Gameovtex.getSize().y);
@@ -94,12 +87,7 @@ bool loadAssets(GameData& game)
     game.carselectex.loadFromFile("assets/carselect.jpeg");
     game.carselect.setTexture(game.carselectex);
     game.carselect.setScale(1280.f / game.carselectex.getSize().x, 720.f / game.carselectex.getSize().y);
-  
-
-    /*game.playerTex.loadFromFile("assets/car.png");
-    game.player.setTexture(game.playerTex);
-    game.player.setScale(0.2f, 0.2f);
-    game.player.setPosition(Vector2f(30.f, 330.f));*/
+ 
 
     game.Playertex[2].loadFromFile("assets/player4.png");
     game.Playertex[1].loadFromFile("assets/player3.png");
@@ -126,7 +114,6 @@ bool loadAssets(GameData& game)
     game.pbutton2.setPosition(447.f, 260.f);
     game.pbutton3.setSize(Vector2f(395.f, 260.f));
     game.pbutton3.setPosition(851.f, 260.f);
-
 
 
     game.Score.setFont(game.menuFont);
@@ -160,26 +147,20 @@ bool loadAssets(GameData& game)
         return false;
     }
     
-    /*if (game.backgroundMusic.openFromFile("assets/TM1.wav"))
+    if (!game.coinTex.loadFromFile("assets/coin.png"))
     {
-        game.backgroundMusic.setLoop(true);
-        game.backgroundMusic.setVolume(30.f);
-        game.backgroundMusic.play();
-    }*/
+        return false;
+    }
+    game.coinSound.openFromFile("assets/coin_collect.wav");   
+    game.coinSound.setVolume(60.f);
 
-     if (!game.coinTex.loadFromFile("assets/coin.png"))
-     {
-     return false;
-     }
-     game.coinSound.openFromFile("assets/coin_collect.wav");   
-     game.coinSound.setVolume(60.f);
+    game.coinText.setFont(game.menuFont);
+    game.coinText.setFillColor(Color::Yellow);
+    game.coinText.setOutlineColor(Color::Black);
+    game.coinText.setOutlineThickness(2.f);
+    game.coinText.setCharacterSize(16);
+    game.coinText.setPosition(10.f, 40.f);   // displaying it under the "score"
 
-     game.coinText.setFont(game.menuFont);
-     game.coinText.setFillColor(Color::Yellow);
-     game.coinText.setOutlineColor(Color::Black);
-     game.coinText.setOutlineThickness(2.f);
-     game.coinText.setCharacterSize(16);
-     game.coinText.setPosition(10.f, 40.f);   // displaying it under the "score"
     std::ifstream scoreFile("highscore.txt");
     if (scoreFile.is_open())
     {
