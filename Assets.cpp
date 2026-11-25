@@ -89,6 +89,10 @@ bool loadAssets(GameData& game)
     game.carselectex.loadFromFile("assets/carselect.jpeg");
     game.carselect.setTexture(game.carselectex);
     game.carselect.setScale(1280.f / game.carselectex.getSize().x, 720.f / game.carselectex.getSize().y);
+
+    game.flametex.loadFromFile("assets/flame.png");
+    game.flame.setTexture(game.flametex);
+    game.flame.setScale(0.15f, 0.15f);
  
 
     game.Playertex[2].loadFromFile("assets/player4.png");
@@ -165,7 +169,7 @@ bool loadAssets(GameData& game)
     game.coinText.setOutlineColor(Color::Black);
     game.coinText.setOutlineThickness(2.f);
     game.coinText.setCharacterSize(16);
-    game.coinText.setPosition(10.f, 40.f);   // displaying it under the "score"
+    game.coinText.setPosition(10.f, 40.f);  
 
     std::ifstream scoreFile("highscore.txt");
     if (scoreFile.is_open())

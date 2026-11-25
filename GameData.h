@@ -14,7 +14,10 @@ struct Coin
     sf::Sprite sprite;
 };
 
-struct GameData {
+struct GameData 
+{
+    sf::Texture flametex;
+    sf::Sprite flame;
     sf::Texture instex;
     sf::Sprite instsc;
     sf::Texture carTex[4];
@@ -87,7 +90,6 @@ struct GameData {
 
     bool playerselect = false;
     bool mapselect = false;
-    bool isinstruc = false;
     bool Pause = false;
 
     bool gameOver = false; 

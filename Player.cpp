@@ -46,9 +46,8 @@ void updatePlayer(GameData& game) {
     }
 
     game.boostbar.setSize(sf::Vector2f(200.f * barwidthratio,25.f));
-/*    game.boostbar2.setSize(sf::Vector2f(200 / bar2widthratio, 40.f));*/
 
-    float ypos = game.player.getPosition().y; //reset the car if it moves out of the road
+    float ypos = game.player.getPosition().y;
     if (ypos < 140.f)
         ypos = 140.f;
     if (ypos + game.player.getGlobalBounds().height > 580.f)

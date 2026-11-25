@@ -30,11 +30,11 @@ int main() {
         }
 
         window.clear();
-        // road loop
+        
         
 
         window.draw(game.Road);
-        window.draw(game.Road2);// end
+        window.draw(game.Road2);
         float roadspd = game.speed;
         if (game.isboost)
         {
@@ -55,8 +55,11 @@ int main() {
             }
             updatePlayer(game);
             game.hitbox.setPosition(game.player.getPosition().x,game.player.getPosition().y-30);
+            game.flame.setPosition(game.player.getPosition().x - 50.f, game.player.getPosition().y + 3.f);
             updateTraffic(game, window);
             drawTrafficAndPlayer(game, window);
+            if (game.isboost)
+                window.draw(game.flame);
         }
 
         drawMenuAndHud(game, window);

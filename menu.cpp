@@ -30,7 +30,7 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
         game.boostdelay = 0;
         game.isboost = false;
         game.isboostdelay = false;
-        if (game.menumusic.getStatus() != sf::Music::Playing) //new
+        if (game.menumusic.getStatus() != sf::Music::Playing)
         {
             game.menumusic.play();
         }
@@ -103,7 +103,7 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
             game.click.setVolume(40.f);
             game.click.play();
             game.Road.setTexture(game.Roadtex[1], true);
-            game.Road2.setTexture(game.Roadtex[1], true); // true resets size of rectangle
+            game.Road2.setTexture(game.Roadtex[1], true);
             game.Road.setScale(1280.f / game.Roadtex[1].getSize().x, 720.f / game.Roadtex[1].getSize().y);
             game.Road2.setScale(1280.f / game.Roadtex[1].getSize().x, 720.f / game.Roadtex[1].getSize().y);
             game.Road.setPosition(0.f, 0.f);
@@ -144,7 +144,7 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
    
    
 
-    else if (!game.gameStarted && !game.mapselect && game.playerselect && event.type == sf::Event::KeyPressed) //11pm
+    else if (!game.gameStarted && !game.mapselect && game.playerselect && event.type == sf::Event::KeyPressed) 
     {
         if (event.key.code == sf::Keyboard::Num1)
         {
@@ -207,7 +207,7 @@ void handleMenuEvent(GameData& game, const sf::Event& event) {
             game.boostdelay = 0;
             game.isboost = false;
             game.isboostdelay = false;
-            if (game.menumusic.getStatus() != sf::Music::Playing) //new
+            if (game.menumusic.getStatus() != sf::Music::Playing) 
             {
                 game.menumusic.play();
             }
@@ -230,34 +230,29 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
     else if (game.mapselect && !game.gameStarted && !game.playerselect)
     {
         window.draw(game.selectimg);
-        /*window.draw(game.mbutton1);
-        window.draw(game.mbutton2);
-        window.draw(game.mbutton3);*/
+
     }
-    else if (game.playerselect && !game.gameStarted && !game.mapselect) //up
+    else if (game.playerselect && !game.gameStarted && !game.mapselect) 
     {
         window.draw(game.carselect);
         window.draw(game.cardp1);
         window.draw(game.cardp2);
         window.draw(game.cardp3);
-       /* window.draw(game.pbutton1);
-        window.draw(game.pbutton2);
-        window.draw(game.pbutton3);*/
+      
     }
     else if (game.gameOver) {
-        //window.draw(game.GameOver);
-        //UPDATE 2 
+        
         window.draw(game.Gameovimg);
         game.player.setPosition(sf::Vector2f(0.f, 320.f));
     }
     game.Score.setString("Score: " + std::to_string(game.score) + "   High score: " + std::to_string(game.highScore));
     window.draw(game.Score);
 
-    if (game.gameStarted && !game.gameOver) {
-        // Show the shield icon when ready.
+    if (game.gameStarted && !game.gameOver) 
+    {
         window.draw(game.boostbar);
         window.draw(game.boostxt);
-        /*window.draw(game.boostbar2);*/
+       
         if (game.shieldActive) {
             sf::Sprite shieldIcon(game.powerUpTextures[0]);
             shieldIcon.setScale(0.25f, 0.25f); 
@@ -273,7 +268,7 @@ void drawMenuAndHud(GameData& game, sf::RenderWindow& window) {
             window.draw(shieldLabel);
         }
 
-        // Showing the slow-powerup icon and a time bar
+      
         if (game.slowTrafficTimer > 0) {
             sf::Sprite slowIcon(game.powerUpTextures[1]);
             slowIcon.setScale(0.25f, 0.25f);

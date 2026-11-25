@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <fstream>
 #include<string>
-//traffic logic
 void updateTraffic(GameData& game, const sf::RenderWindow& window) 
 {
   
